@@ -1,0 +1,94 @@
+package com.zjapl.weixin.transfer.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.zjapl.weixin.transfer.bean.WeChatObjectResult;
+import com.zjapl.weixin.transfer.bean.WeChatResult;
+import com.zjapl.weixin.transfer.dict.WeChatUrlDict;
+import com.zjapl.weixin.transfer.helper.WeChatTokenHelper;
+import com.zjapl.weixin.transfer.utils.HttpHelper;
+import com.zjapl.weixin.transfer.utils.HttpHelper.HttpResult;
+import com.zjapl.weixin.transfer.utils.HttpUtils;
+
+/**
+ * 微信菜接口实现
+ * @author yangb
+ *
+ */
+@Service
+public class MenuService {
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	String menuJson = "{\"button\": [{\"key\": \"18\",             \"name\": \"个人中心\",             \"sub_button\": [                {                    \"key\": \"18\",                     \"name\": \"我的订单\",                     \"type\": \"click\"                },                 {                    \"key\": \"19\",                     \"name\": \"购物车\",                     \"type\": \"click\"                },                 {                    \"key\": \"17\",                     \"name\": \"我的主页\",                     \"type\": \"click\"  } ],\"type\": \"click\" }]}";
+	
+	/**
+	 * 同步菜单信息
+	 * @param json
+	 * @param appid
+	 * @return
+	 */
+	public WeChatResult update(String json, String appid) {
+		String result = HttpUtils.methodPost(json, WeChatUrlDict.CREATE_MENU_URL, WeChatTokenHelper.obtainAccessToken(appid));
+		return WeChatResult.makeResultEx(result);
+	}
+
+	/**
+	 * 添加个性化菜单
+	 * @param json
+	 * @param appid
+	 * @return
+	 */
+	public WeChatObjectResult<String> addConditional(String json, String appid) {
+		String result = HttpUtils.methodPost(json, WeChatUrlDict.ADD_CONDITIONAL_MENU_URL, WeChatTokenHelper.obtainAccessToken(appid));
+		JSONObject jb = JSON.parseObject(result);
+		String menuid = jb.getString("menuid");
+		return new WeChatObjectResult<String>().makeObjectResultEx(menuid);
+	}
+	
+	/**
+	 * 获取所有菜单, JSON 数据
+	 * @param appid
+	 * @return
+	 */
+	public WeChatObjectResult<String> obtainAll(String appid) {
+		String menu = HttpUtils.methodGet(WeChatUrlDict.QUERY_MENU_ALL_URL, WeChatTokenHelper.obtainAccessToken(appid));
+		return new WeChatObjectResult<String>().makeObjectResultEx(menu);
+	}
+
+	
+	/**
+	 * 删除所有数据
+	 * @param appid
+	 * @return
+	 */
+	public WeChatResult deleteAll(String appid) {
+		HttpResult httpResult = HttpHelper.get(WeChatUrlDict.DELETE_MENU_ALL_URL + WeChatTokenHelper.obtainAccessToken(appid));
+		return WeChatResult.makeResultEx(httpResult.getString());
+	}
+	
+	/**
+	 * 删除个性化菜单
+	 * @param id
+	 * @param appid
+	 * @return
+	 */
+	public WeChatResult delConditionalMenu(Long menuid,String appid){
+		String data = "{\"menuid\":\"" + menuid + "\"}";
+		String result = HttpUtils.methodPost(data, WeChatUrlDict.DELETE_CONDITIONAL_MENU_URL, WeChatTokenHelper.obtainAccessToken(appid));
+		return  WeChatResult.makeResultEx(result);
+	}
+
+}
+				
+				
+				
+				
+				
+				
+				
+				
+				
