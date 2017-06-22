@@ -7,6 +7,7 @@ import com.zjapl.weixin.transfer.service.UserService;
 import com.zjapl.weixin.transfer.utils.EventInfoUtils;
 
 /**
+ * 事件处理
  * @author yangb
  *
  */

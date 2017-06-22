@@ -9,6 +9,7 @@ import com.zjapl.weixin.transfer.dict.WeChatUrlDict;
 import com.zjapl.weixin.transfer.utils.HttpUtils;
 
 /**
+ * 微信JS-API令牌管理
  * JsApiTicketHelper
  * @author yangb
  *

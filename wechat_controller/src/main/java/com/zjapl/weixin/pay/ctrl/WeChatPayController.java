@@ -25,7 +25,7 @@ import com.zjapl.weixin.transfer.utils.WeiXinUtils;
 import com.zjapl.weixin.transfer.utils.WeiXinXmlUtils;
 
 /**
- * 微信认证接口
+ * 微信支付接口
  * @author yangb
  *
  */
@@ -68,7 +68,7 @@ public class WeChatPayController {
 	}
 
 	/**
-	 * 解析state 格式: 金额*商品名称*单号, 限制长度128字节.
+	 * 解析请求state 格式: 金额*商品名称*单号, 限制长度128字节.
 	 * @param state
 	 */
 	private Map<String, String> parseOrderState(String state) {

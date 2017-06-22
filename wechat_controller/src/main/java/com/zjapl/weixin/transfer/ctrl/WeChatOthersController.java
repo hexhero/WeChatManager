@@ -11,7 +11,7 @@ import com.zjapl.weixin.transfer.service.UserService;
 import com.zjapl.weixin.transfer.service.UserService.BatchTag;
 
 /**
- * 微信认证接口
+ * 微信其他服务接口
  * @author yangb
  *
  */
@@ -20,6 +20,7 @@ import com.zjapl.weixin.transfer.service.UserService.BatchTag;
 public class WeChatOthersController {
 
 	private UserService userService = new UserService();
+	
 	/**
 	 * 为用户打标签
 	 * 

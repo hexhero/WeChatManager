@@ -22,7 +22,6 @@ import com.zjapl.weixin.transfer.global.WeChatContent;
 import com.zjapl.weixin.transfer.helper.WeChatJsTicketHelper;
 import com.zjapl.weixin.transfer.helper.WeChatWebAuthTokenHelper;
 import com.zjapl.weixin.transfer.utils.HttpCollectionHelper;
-import com.zjapl.weixin.transfer.utils.HttpHelper;
 import com.zjapl.weixin.transfer.utils.StringUtils;
 import com.zjapl.weixin.transfer.utils.WeiXinSignUtils;
 
@@ -62,7 +61,7 @@ public class WeChatWebController {
 	}
 	
 	/**
-	 * JsApi签名配置
+	 * 计算JsApi签名信息
 	 * @param url
 	 * @param appid
 	 * @return
@@ -76,7 +75,7 @@ public class WeChatWebController {
 	}
 	
 	/**
-	 * 微信页面授权回调处理
+	 * 微信页面授权重定向处理
 	 * @param code
 	 * @param state
 	 * @param scope
@@ -110,12 +109,16 @@ public class WeChatWebController {
 					break;
 				}
 				
-				//与子系统通讯,获得子系统的响应结果
-				String resultStr = comunication(appinfo,transferData,resp,req);
-				return resultStr;
+				//重定向到子系统
+				try {
+					comunication(appinfo,transferData,resp,req);
+				} catch (IOException e) {
+					e.printStackTrace();
+					return "<h2>页面请求失败</h2>";
+				}
 			}
 		}
-		return "<h2>页面请求失败</h2>";
+		return null;
 	}
 
 
@@ -124,18 +127,12 @@ public class WeChatWebController {
 	 * @param appinfo
 	 * @param transferData
 	 * @return
+	 * @throws IOException 
 	 */
-	private String comunication(AppInfo appinfo, TransferData transferData,HttpServletResponse resp, HttpServletRequest req) {
-		
+	private void comunication(AppInfo appinfo, TransferData transferData,HttpServletResponse resp, HttpServletRequest req) throws IOException {
 		String url = appinfo.getCallbackUrl()+WeChatEventDict.CALLBACK_WEB_AUTH + transferData.parseParam("utf-8");
 		logger.info("重定向地址", url);
-		try {
-			resp.sendRedirect(url);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-//		String resultStr = HttpHelper.postJson(appinfo.getCallbackUrl()+WeChatEventDict.CALLBACK_WEB_AUTH, transferData.parseJSON());
-		return null;
+		resp.sendRedirect(url); //重定向到子系统
 	}
 	
 /*	//不连接子系统, 直接返回openid

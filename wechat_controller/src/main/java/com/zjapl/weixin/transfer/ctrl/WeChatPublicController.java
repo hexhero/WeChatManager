@@ -13,7 +13,7 @@ import com.zjapl.weixin.transfer.manager.EventManager;
 import com.zjapl.weixin.transfer.utils.WeiXinXmlUtils;
 
 /**
- * 微信回调全局接口
+ * 微信统一接口
  * @author yangb
  *
  */
@@ -24,7 +24,7 @@ public class WeChatPublicController {
 	private EventManager eventManager = EventManager.getInstance();
 	
 	/**
-	 * 微信统一回调接口
+	 * 微信消息事件回调接口
 	 * 
 	 * @param value
 	 * @return
@@ -54,7 +54,7 @@ public class WeChatPublicController {
 	}
 	
 	/**	
-	 * 微信服务器认证回调接口
+	 * 微信服务器配置认证接口
 	 * 
 	 * @param server
 	 * @return

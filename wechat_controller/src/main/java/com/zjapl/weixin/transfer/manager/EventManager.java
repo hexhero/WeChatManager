@@ -7,7 +7,7 @@ import com.zjapl.weixin.transfer.bean.EventInfo;
 import com.zjapl.weixin.transfer.utils.StringUtils;
 
 /**
- * 事件分发器
+ * 事件/消息 管理中心
  * @author yangb
  *
  */

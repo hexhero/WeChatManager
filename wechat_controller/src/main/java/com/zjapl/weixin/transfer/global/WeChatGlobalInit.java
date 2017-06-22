@@ -9,7 +9,7 @@ import com.zjapl.weixin.transfer.manager.EventManager;
 import com.zjapl.weixin.transfer.manager.EventObserver;
 
 /**
- * 全局初始化
+ * 平台初始化
  * @author yangb
  *
  */
@@ -45,7 +45,7 @@ public class WeChatGlobalInit {
 	public static void initApp(ArrayList<AppInfo> apps){
 		content = new WeChatContent(); 
 		content.init(apps);//初始化Content
-		System.out.println("系统初始化完成!");
+		System.out.println("[消息]:微信公众号初始化完成!");
 	}
 	
 	

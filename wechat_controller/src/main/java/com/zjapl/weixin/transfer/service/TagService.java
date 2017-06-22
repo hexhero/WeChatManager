@@ -13,6 +13,11 @@ import com.zjapl.weixin.transfer.dict.WeChatUrlDict;
 import com.zjapl.weixin.transfer.helper.WeChatTokenHelper;
 import com.zjapl.weixin.transfer.utils.HttpUtils;
 
+/**
+ * 标签服务
+ * @author yangb
+ *
+ */
 @Service("transferTagService")
 public class TagService{
 
@@ -50,6 +55,12 @@ public class TagService{
 	}
 
 	
+	/**
+	 * 修改标签
+	 * @param tag
+	 * @param appid
+	 * @return
+	 */
 	public WeChatResult update(Tag tag, String appid) {
 		String data = JSON.toJSONString(tag);
 		data = "{\"tag\":" + data +"}";
@@ -57,6 +68,12 @@ public class TagService{
 		return WeChatResult.makeResultEx(result);
 	}
 
+	/**
+	 * 删除标签
+	 * @param id
+	 * @param appid
+	 * @return
+	 */
 	public WeChatResult delete(Serializable id, String appid) {
 		Tag tag = new Tag();
 		tag.setId((Integer)id);

@@ -3,7 +3,7 @@ package com.zjapl.weixin.transfer.manager;
 import com.zjapl.weixin.transfer.bean.EventInfo;
 
 /**
- * 事件消息处理接口
+ * 事件/消息 处理接口
  * @author yangb
  *
  */

@@ -10,6 +10,7 @@ import com.zjapl.weixin.transfer.dict.WeChatUrlDict;
 import com.zjapl.weixin.transfer.utils.HttpCollectionHelper;
 
 /**
+ * 微信网页授权 获取用户详细信息令牌管理
  * 微信 webtoken 获取.
  * @author yangb
  *

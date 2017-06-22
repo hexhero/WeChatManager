@@ -13,16 +13,17 @@ import com.zjapl.weixin.transfer.helper.WeChatTokenHelper;
 import com.zjapl.weixin.transfer.utils.HttpHelper;
 
 /**
- * @author admin
+ * 微信资源服务
+ * @author yangb
  *
  */
 @Service
 public class ResourceService {
 
 	/**
-	 * 上传
+	 * 上传图片到微信
 	 * @param file
-	 * @return
+	 * @return 图片URL
 	 */
 	public WeChatObjectResult<String> uploadImg(File file, String appid) {
 		String url = MessageFormat.format(WeChatUrlDict.UPLOAD_IMG_URL, WeChatTokenHelper.obtainAccessToken(appid));

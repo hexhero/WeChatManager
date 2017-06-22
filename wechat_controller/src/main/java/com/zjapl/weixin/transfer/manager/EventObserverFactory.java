@@ -10,7 +10,7 @@ import com.zjapl.weixin.transfer.bean.AppInfo;
 public class EventObserverFactory {
 
 	/**
-	 * 创建一个子应用
+	 * 为应用创建一个事件处理类
 	 * @param appinfo
 	 * @return
 	 */

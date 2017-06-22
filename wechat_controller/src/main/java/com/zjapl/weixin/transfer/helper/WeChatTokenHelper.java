@@ -14,7 +14,7 @@ import com.zjapl.weixin.transfer.global.WeChatContent;
 import com.zjapl.weixin.transfer.utils.HttpUtils;
 
 /**
- * 微信Token帮助类
+ * 微信令牌管理
  * @author yangb
  *
  */

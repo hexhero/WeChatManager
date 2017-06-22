@@ -15,7 +15,7 @@ import com.zjapl.weixin.transfer.utils.HttpHelper.HttpResult;
 import com.zjapl.weixin.transfer.utils.HttpUtils;
 
 /**
- * 微信菜接口实现
+ * 微信菜单服务
  * @author yangb
  *
  */

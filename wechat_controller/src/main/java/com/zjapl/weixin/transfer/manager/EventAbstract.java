@@ -4,7 +4,7 @@ import com.zjapl.weixin.transfer.bean.EventInfo;
 import com.zjapl.weixin.transfer.dict.WeChatEventDict;
 
 /**
- * 事件消息的抽象类
+ * 事件/消息处理类抽象
  * @author yangb
  *
  */
