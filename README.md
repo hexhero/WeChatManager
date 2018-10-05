@@ -17,9 +17,9 @@ public class WeiXinInit {
 	@PostConstruct
 	public void init(){
 		AppInfo appInfo = new AppInfo();
-		appInfo.setAppid("wxe88656209c6cf6fb");
+		appInfo.setAppid("wxxxxxxxx");
 		appInfo.setAppname("云尚名宿");
-		appInfo.setSecret("ef0960c8b097ef06cf02e2d9d5762a71"); //密匙
+		appInfo.setSecret("ef0960xxxxxxxxxx62a71"); //密匙
 		
 		WeChatGlobalInit.initApp(Arrays.asList(appInfo));
 		WeChatGlobalInit.registAuthExecutor(ctrl);  //初始化认证信息处理器
